@@ -1,1 +1,10 @@
 #!/usr/bin/env bash
+
+if [ -d $1 ]; then
+    cd $1
+fi
+
+for file in $(git ls-files) ; do
+    echo $file
+    sed -i '' $'s/^    /\t/g' $file
+done
