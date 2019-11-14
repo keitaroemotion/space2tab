@@ -5,6 +5,8 @@ if [ -d $1 ]; then
 fi
 
 for file in $(git ls-files) ; do
-    echo $file
-    sed -i '' $'s/^    /\t/g' $file
+    if [[ $(file $file) == *ASCII* ]]; then
+        echo $file
+        sed -i '' $'s/^    /\t/g' $file
+    fi
 done
